@@ -1,0 +1,90 @@
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+body { padding-top: 40px; padding-bottom: 175px;}
+@media screen and (max-width: 531px) {
+    body { padding-bottom: 220px; }
+
+}
+@media screen and (max-width: 700px) {
+  body { padding-bottom: 200px; }
+}
+.hero-bg{
+    color:#f2f2f2;
+    background-image: url('./core/images/hero1-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 720px;
+}
+
+.typewriter h1 {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+      width: 90%;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+  }
+
+  .hero-txt{
+      background: rgba(0, 0, 0, 0.7);
+      padding:80px 50px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px black;
+  }
+  .form  input {
+    margin-top: 10px;
+    box-shadow: 0 0 5px #17a2b8;
+  }
+  .aboutHero{
+    text-align: center;
+    font-size: 1.5em;
+  }
+  .aboutText{
+    padding:20px 50px;
+  }
+  .aboutImg{
+    height: 300px;
+    border-radius: 10px;
+  }
+  .teamArea div {
+    text-align: center;
+      background-image: url("./core/images/user.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 100px;
+  }
+  .post {
+    border: 1px solid #afafaf;
+  }
+  .userProfileIMG {
+    display: inline-block;
+  }
+  .userName {
+    display: inline-block;
+  }
+  .userArea {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+  }
+  .postImage{
+    max-width:100%
+  }
