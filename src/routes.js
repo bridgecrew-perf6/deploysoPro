@@ -10,6 +10,15 @@ import Profile from "./core/Profile";
 import Create from "./core/Create";
 import Feed from "./core/Feed";
 import './styles.css';
+import PostWithId from './core/PostWithId';
+
+
+const SinglePost = ({match}) => {
+  return(
+    <PostWithId id={match.params.id}>
+    </PostWithId>
+  );
+}
 
 const Routes = () => {
     return (
@@ -24,6 +33,7 @@ const Routes = () => {
           <Route path="/signup" exact component={Signup} />
           <Route path="/signin" exact component={Signin} />
           <Route path="/signout" exact component={Signout} />
+          <Route path="/feed/:id" exact component={SinglePost} />
         </Switch>
       </BrowserRouter>
     );

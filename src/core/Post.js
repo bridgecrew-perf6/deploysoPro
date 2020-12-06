@@ -1,16 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Post(props) {
   return (
     <div className="post m-3">
       <div className="userArea">
-        <img className="userProfileIMG" src={props.userImage} height="50px" />
-        <p className="userName">{props.userName}</p>
+        <img
+          className="userProfileIMG"
+          src={props.post.userimage}
+          height="50px"
+        />
+      <h4>{props.post.title}</h4>
       </div>
-      <hr />
-      <h4>{props.title}</h4>
-      <img className="postImage" src={props.pictures} />
-      <p>{props.description}</p>
+      <img className="postImage" src={props.post.pictures} />
+      <p>{props.post.description}</p>
+      <Link to={`/feed/${props.post.key}`}>
+        <h3>Read More</h3>
+      </Link>
     </div>
   );
 }

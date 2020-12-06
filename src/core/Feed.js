@@ -1,58 +1,79 @@
-import React from "react";
+import React, { Component } from "react";
 import Navbar from "./Navbar";
-// import Footer from "./Footer";
 import firebase from "firebase";
 import Post from "./Post";
 require("firebase/auth");
 
-function Feed() {
-    const [displayName,setDisplayName] = React.useState("");
-    let posts=[];
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-          setDisplayName(user.displayName);
-        } else {
-          console.log("error");
-        }
-      });
-      const feedRef = firebase.database().ref('Posts');
-      feedRef.on('value', (snapshot) => {
-        let data = snapshot.val();
-        for (let post in data) {
-          posts.push({
-            key: post,
-            description: data[post].description,
-            title: data[post].title,
-            pictures: data[post].pictures,
-            userImage : data[post].userImage,
-          });
-        }
+class Feed extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      displayName: "",
+      posts: [],
+    };
+  }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({
+          displayName: user.displayName,
+        });
+        this.loadPosts();
+      } else {
+        console.log("error");
+      }
+    });
+  }
+
+  loadPosts = () => {
+    const feedRef = firebase.database().ref("Posts");
+    let morepost = this.state.posts;
+
+    feedRef.on("value", (snapshot) => {
+      snapshot.forEach((data) => {
+        const currentPost = data.val();
+        let post = {
+          key: currentPost.postKey,
+          description: currentPost.description,
+          title: currentPost.title,
+          pictures: currentPost.pictures,
+          userimage: currentPost.userImage,
+        };
+        morepost.push(post);
       });
 
-      if(window.localStorage.getItem("userEmail")) {
+      this.setState({
+        posts: morepost,
+      });
+    });
+  };
+  render() {
+    if (window.localStorage.getItem("userEmail")) {
+      const postWithIds = this.state.posts.map((post) => {
         return (
-            <div>
-                <Navbar />
-        <div className="container mt-5 text-center">Welcome Back, {displayName}</div>
-        <hr />
-        <div className="container text-center">
-        {posts.map((post) => (
-            <Post
-            key={post.key}
-            userImage={post.userImage}
-            title={post.title}
-            description={post.description}
-            pictures={post.pictures}
-            userName={post.author}
-            />
-          ))}
-    </div>
-                {/* <Footer /> */}
-            </div>
-        );  
+          <div key={post.key} className="postid">
+            <Post post={post} />
+          </div>
+        );
+      });
+      return (
+        <div>
+          <Navbar />
+          <div className="container mt-5 text-center">
+            Welcome Back, {this.state.displayName}
+          </div>
+          <hr />
+          <div className="container text-center">
+            {postWithIds}
+          </div>
+        </div>
+      );
     } else {
-        window.location="/signin"
+      window.location = "/signin";
     }
+  }
 }
 
 export default Feed;

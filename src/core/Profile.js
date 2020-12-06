@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "./Navbar";
-// import Footer from "./Footer";
 import firebase from "firebase";
 require("firebase/auth");
 
@@ -8,6 +7,7 @@ function Profile() {
   const [displayName, setDisplayName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [photoURL, setPhotoURL] = React.useState("");
+  
 
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -30,7 +30,6 @@ function Profile() {
             <input className="userEmailProfile text-center mt-4 form-control" type="text" value={email} readOnly={true} />
           </div>
         </div>
-        {/* <Footer /> */}
       </div>
     );
   } else {

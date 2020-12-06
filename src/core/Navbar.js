@@ -20,12 +20,12 @@ function Navbar(){
               <Link className="nav-link" to="/contact">Contact</Link>
             </li>
           </ul>
-          {(window.localStorage.getItem("userEmail")!="") && <Link className="btn btn-outline-primary my-2 my-sm-0 mx-2 text-white" to="/create">Create a Post</Link>}
-          {(window.localStorage.getItem("userEmail")!="") && <Link className="btn btn-outline-primary my-2 my-sm-0 mx-2 text-white" to="/feed">Feed</Link>}
-          {(window.localStorage.getItem("userEmail")!="") && <Link className="btn btn-outline-primary my-2 my-sm-0 mx-2 text-white" to="/profile">My Profile</Link>}
-            {(window.localStorage.getItem("userEmail")=="") && <Link className="btn btn-outline-success my-2 my-sm-0 mx-2" to="/signup">Sign Up</Link>}
-            {(window.localStorage.getItem("userEmail")=="") && <Link className="btn btn-outline-warning my-2 my-sm-0 mx-2" to="/signin">Sign In</Link>}
-            {(window.localStorage.getItem("userEmail")!="") && <Link className="btn btn-outline-danger my-2 my-sm-0 mx-2" to="/signout">Sign Out</Link>}
+          {(window.localStorage.getItem("userEmail")) && <Link className="btn btn-outline-primary my-2 my-sm-0 mx-2 text-white" to="/create">Create a Post</Link>}
+          {(window.localStorage.getItem("userEmail")) && <Link className="btn btn-outline-primary my-2 my-sm-0 mx-2 text-white" to="/feed">Feed</Link>}
+          {(window.localStorage.getItem("userEmail")) && <Link className="btn btn-outline-primary my-2 my-sm-0 mx-2 text-white" to="/profile">My Profile</Link>}
+            {!(window.localStorage.getItem("userEmail")) && <Link className="btn btn-outline-success my-2 my-sm-0 mx-2" to="/signup">Sign Up</Link>}
+            {!(window.localStorage.getItem("userEmail")) && <Link className="btn btn-outline-warning my-2 my-sm-0 mx-2" to="/signin">Sign In</Link>}
+            {(window.localStorage.getItem("userEmail")) && <Link className="btn btn-outline-danger my-2 my-sm-0 mx-2" to="/signout">Sign Out</Link>}
         </div>
       </nav>
     );
