@@ -40,10 +40,12 @@ function Post(props) {
           <p>{props.post.description}</p>
         </div>
       </div>
-      <img className="postImage" src={props.post.pictures} />
-      <Link to={`/feed/${props.post.key}`}>
-        <h3 className="btn btn-warning">Read More</h3>
-      </Link>
+      <div className="cs7buttonerror">
+        <img className="postImage" src={props.post.pictures} />
+        <Link to={`/feed/${props.post.key}`}>
+          <h3 className=" cs7button btn btn-warning">Read More</h3>
+        </Link>
+      </div>
     </div>
   );
 }

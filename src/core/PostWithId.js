@@ -56,11 +56,11 @@ function RenderComments(props) {
         <tr>
           <div className="userDetailsInComment">
             <img className="userImageInComment" src={comment.uimg} alt="user" />
-            <span>
+            {/* <span> */}
               <h3 className="userNameInComment display-5">{comment.uname}</h3>
-            </span>
+            {/* </span> */}
             <span className="userCommentArea">
-              <h5 className="display-4 userComment">{comment.content}</h5>
+              <h5 className=" userComment display-4">{comment.content}</h5>
             </span>
           </div>
         </tr>

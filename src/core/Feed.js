@@ -65,7 +65,7 @@ class Feed extends Component {
             Welcome Back, {this.state.displayName}
           </div>
           <hr />
-          <div className="container text-center">
+          <div className=" cs7container container text-center">
             {postWithIds}
           </div>
         </div>
