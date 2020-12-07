@@ -236,3 +236,8 @@ body {
 .cs7button{
   margin-top: 2px;
 }
+.cs7commentfix{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}

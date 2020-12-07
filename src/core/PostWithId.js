@@ -52,13 +52,13 @@ function CreateComment(props) {
 function RenderComments(props) {
   const comments = props.comments.map((comment) => {
     return (
-      <div className="comment" key={comment.timeStamp}>
+      <div className="comment addNewComment" key={comment.timeStamp}>
         <tr>
-          <div className="userDetailsInComment">
+          <div className=" cs7commentfix userDetailsInComment">
             <img className="userImageInComment" src={comment.uimg} alt="user" />
-            {/* <span> */}
+            <span>
               <h3 className="userNameInComment display-5">{comment.uname}</h3>
-            {/* </span> */}
+            </span>
             <span className="userCommentArea">
               <h5 className=" userComment display-4">{comment.content}</h5>
             </span>
