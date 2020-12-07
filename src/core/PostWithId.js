@@ -83,9 +83,9 @@ function SinglePost(props) {
             height="50px"
           />
           <h4>{props.post.title}</h4>
-          {/* <p className="userName">{props.post.userName}</p> */}
+
+          
         </div>
-        {/* <hr /> */}
         <img alt="post" className="postImage" src={props.post.pictures} />
         <p>{props.post.description}</p>
       </div>
@@ -165,9 +165,9 @@ class PostWithId extends Component {
       <React.Fragment>
         <Navbar />
         <div className="container mt-5 text-center"></div>
-        <div className="container text-center">
+        <div className="container text-center singlePostWithId">
           <SinglePost post={this.state.post} />
-          <div className="post m-3">
+          <div className="post m-3 renderComment">
             <RenderComments comments={this.state.comments} />
             <CreateComment user={this.state.user} postKey={this.state.postId} />
           </div>

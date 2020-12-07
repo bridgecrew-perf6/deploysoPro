@@ -19,9 +19,9 @@ function About() {
           <div className="aboutText">
             What is SoPRO you ask?
             <br />
-            Well, its a developer community where people are determined to help
+            Well, it's a developer community where people are determined to help
             each other progress. The idea was simple, you think of an idea for a
-            project and you get stuck at a point? Maybe you need a parter to
+            project and you get stuck at a point? Maybe you need a partner to
             help you out! That's where <b>SoPRO</b> outshines any other platform
             and comes to your rescue!
           </div>

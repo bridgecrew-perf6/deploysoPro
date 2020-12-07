@@ -10,6 +10,7 @@ function Create() {
   const [description, setDescription] = React.useState("");
   const [imageUrl, setImageUrl] = React.useState("");
   const [userID, setUserID] = React.useState("");
+  const [isImageUploaded, setIsImageUploaded] = React.useState(false);
 
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -71,6 +72,8 @@ function Create() {
         },
         function () {
           // Upload completed successfully, now we can get the download URL
+          setIsImageUploaded(true);
+          window.document.getElementById("submitbtn").classList.remove("disabled");
           window.document.getElementById("loadingGIF").classList.add("d-none");
           uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
             console.log("File available at", downloadURL);
@@ -82,24 +85,29 @@ function Create() {
   }
 
   function handleSubmit() {
-    var postListRef = firebase.database().ref("Posts");
-    var newPostRef = postListRef.push();
-
-    newPostRef.set({
-      author: displayName,
-      userImage: userPhotoURL,
-      title: title,
-      description: description,
-      pictures: imageUrl,
-      userId: userID,
-      timeStamp: Math.floor(Date.now() / 1000),
-      postKey: newPostRef.key,
-    });
-    alert("Upload Successful");
-    window.location("/feed");
-    setTitle("");
-    setDescription("");
-    setImageUrl("");
+    if(title&&description&&isImageUploaded){
+      var postListRef = firebase.database().ref("Posts");
+      var newPostRef = postListRef.push();
+  
+      newPostRef.set({
+        author: displayName,
+        userImage: userPhotoURL,
+        title: title,
+        description: description,
+        pictures: imageUrl,
+        userId: userID,
+        timeStamp: Math.floor(Date.now() / 1000),
+        postKey: newPostRef.key,
+      });
+      alert("Upload Successful");
+      window.location("/feed");
+      setTitle("");
+      setDescription("");
+      setImageUrl("");
+    } else{
+      alert("Fill all fields first!");
+    }
+    
   }
 
   if (window.localStorage.getItem("userEmail")) {

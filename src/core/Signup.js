@@ -85,7 +85,7 @@ function Signup() {
               value={name}
               onChange={handleChange}
             />
-            <label htmlFor="inputEmail">Email address</label>
+            <label htmlFor="inputName">Your Name</label>
           </div>
 
           <div className="form-label-group">
